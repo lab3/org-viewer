@@ -1,0 +1,52 @@
+<template>
+  <div>
+    <organization-chart :datasource="ds" :zoom="zoom"></organization-chart>
+  </div>
+</template>
+
+  <style type="text/css">
+    .orgchart { background: #fff; }
+  </style>
+
+<script>
+/* eslint-disable */
+  import Vue from 'vue'
+  import OrganizationChart from 'vue-organization-chart'
+  import 'vue-organization-chart/dist/orgchart.css'
+  import { OrgViewerNode } from "../data/data";
+
+  const n = new OrgViewerNode('1', '2', '3', '4');
+  n.log();
+
+  export default {
+    components: {
+      OrganizationChart
+    },
+    data () {
+      return {
+        zoom: true,
+        ds: {
+          'id': '1',
+          'name': 'Lao Lao',
+          'title': 'general manager',
+          'children': [
+            { 'id': '2', 'name': 'Bo Miao', 'title': 'department manager' },
+            { 'id': '3', 'name': 'Su Miao', 'title': 'department manager',
+              'children': [
+                { 'id': '4', 'name': 'Tie Hua', 'title': 'senior engineer' },
+                { 'id': '5', 'name': 'Hei Hei', 'title': 'senior engineer',
+                  'children': [
+                    { 'id': '6', 'name': 'Pang Pang', 'title': 'engineer' },
+                    { 'id': '7', 'name': 'Xiang Xiang', 'title': 'UE engineer' }
+                  ]
+                 }
+               ]
+             },
+            { 'id': '8', 'name': 'Hong Miao', 'title': 'department manager' },
+            { 'id': '9', 'name': 'Chun Miao', 'title': 'department manager' }
+          ]
+        }
+      }
+    }
+  }
+</script>
